@@ -1,3 +1,11 @@
+<?php session_start(); ?>
+<?php
+    include("../connection.php");
+    define ("BASE_URL", '/shop-dk/');
+    $quantity = isset($_POST['quantity']) ? $_POST['quantity'] : '';
+    $productId = isset($_POST['productId']) ? $_POST['productId'] : '';
+?>
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -53,7 +61,7 @@
                         <div class="row">
                             <div class="col-lg-auto">
                                 <div class="site-logo text-center text-lg-left">
-                                    <a href="index.html">E-Commerce</a>
+                                    <a href="index.php">E-Commerce</a>
                                 </div>
                             </div>
                             <div class="col-lg-5 mx-auto mt-4 mt-lg-0">
@@ -88,7 +96,7 @@
                                 <div class="collapse navbar-collapse" id="mainNav">
                                     <ul class="navbar-nav mx-auto mt-2 mt-lg-0">
                                         <li class="nav-item active">
-                                            <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+                                            <a class="nav-link" href="index.php">Home <span class="sr-only">(current)</span></a>
                                         </li>
                                         <li class="nav-item dropdown">
                                             <a class="nav-link dropdown-toggle" href="#" id="electronics" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Electronics</a>
@@ -225,7 +233,7 @@
                                 <div class="row">
                                     <div class="col-12">
                                         <div class="footer-logo">
-                                            <a href="index.html">E-Commerce</a>
+                                            <a href="index.php">E-Commerce</a>
                                         </div>
                                     </div>
                                     <div class="col-12">

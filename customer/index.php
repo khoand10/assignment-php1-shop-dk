@@ -40,8 +40,8 @@ $result = mysqli_query($mysqli, "SELECT * FROM products ORDER BY id DESC");
                             <div class="col-auto mr-auto">
                                 <ul class="top-nav">
                                     <?php
-                                        $phone = $_SESSION['phone'];
-                                        $email = $_SESSION['email'];
+                                        $phone = isset($_SESSION['phone']) ? $_SESSION['phone'] : '';
+                                        $email = isset($_SESSION['email']) ? $_SESSION['email'] : '';
                                         $display_phone = <<<DISPLAY_INFO
                                         <li>
                                             <a href='tel:+123-456-7890'><i class='fa fa-phone-square mr-2'>$phone</i>+</a>
@@ -207,6 +207,7 @@ $result = mysqli_query($mysqli, "SELECT * FROM products ORDER BY id DESC");
                                             $name = $res['name'];
                                             $image = "<img class='img-fluid' src='".BASE_URL.$res['image']."'>";
                                             $price = $res['price'];
+                                            $id = $res['id'];
                                             $product = <<<PRODUCT
                                             <div class="col-lg-3 col-sm-6 my-3">
                                                 <div class="col-12 bg-white text-center h-100 product-item">
@@ -229,7 +230,9 @@ $result = mysqli_query($mysqli, "SELECT * FROM products ORDER BY id DESC");
                                                             </span>
                                                         </div>
                                                         <div class="col-12 mb-3 align-self-end">
-                                                            <button class="btn btn-outline-dark" type="button"><i class="fas fa-cart-plus mr-2"></i>Add to cart</button>
+                                                            <a href="product.php?productId=$id">
+                                                                <button class="btn btn-outline-dark" type="button"><i class="fas fa-cart-plus mr-2"></i>Add to cart</button>
+                                                            </a>
                                                         </div>
                                                     </div>
                                                 </div>

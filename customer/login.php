@@ -59,7 +59,7 @@ if(isset($_POST['login'])) {
                             <div class="col-auto mr-auto">
                                 <ul class="top-nav">
                                     <li>
-                                        <a href="tel:+123-456-7890"><i class="fa fa-phone-square mr-2"></i><?php $_SESSION['phone'];?></a>
+                                        <a href="tel:+123-456-7890"><i class="fa fa-phone-square mr-2"></i><?php isset($_SESSION['phone']) ? $_SESSION['phone'] : '' ;?></a>
                                     </li>
                                     <li>
                                         <a href="mailto:mail@ecom.com"><i class="fa fa-envelope mr-2"></i>mail@ecom.com</a>
