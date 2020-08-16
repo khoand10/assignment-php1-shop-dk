@@ -5,11 +5,14 @@
 
 <?php
 //including the database connection file
+
 include_once("../connection.php");
 define ("BASE_URL", '/shop-dk/');
 
 //fetching data in descending order (lastest entry first)
 $result = mysqli_query($mysqli, "SELECT * FROM products ORDER BY id DESC");
+
+$length = count($_SESSION['carts']);
 ?>
 
 <html lang="en">
@@ -95,8 +98,11 @@ $result = mysqli_query($mysqli, "SELECT * FROM products ORDER BY id DESC");
                                 <a href="#" class="header-item">
                                     <i class="fas fa-heart mr-2"></i><span id="header-favorite">0</span>
                                 </a>
-                                <a href="cart.html" class="header-item">
-                                    <i class="fas fa-shopping-bag mr-2"></i><span id="header-qty" class="mr-3">2</span>
+                                <a href="cart.php" class="header-item">
+                                    <?php
+                                    $length_display = "<i class='fas fa-shopping-bag mr-2'></i><span id='header-qty' class='mr-3'>$length</span>";
+                                    echo $length_display;
+                                    ?>
                                     <i class="fas fa-money-bill-wave mr-2"></i><span id="header-price">$4,000</span>
                                 </a>
                             </div>

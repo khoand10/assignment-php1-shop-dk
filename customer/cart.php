@@ -2,8 +2,54 @@
 <?php
     include("../connection.php");
     define ("BASE_URL", '/shop-dk/');
-    $quantity = isset($_POST['quantity']) ? $_POST['quantity'] : '';
-    $productId = isset($_POST['productId']) ? $_POST['productId'] : '';
+    if (isset($_POST)) {
+        $quantity = isset($_POST['quantity']) ? $_POST['quantity'] : '';
+        $productId = isset($_POST['productId']) ? $_POST['productId'] : '';
+        $_SESSION['carts']=isset($_SESSION['carts']) ? $_SESSION['carts'] : array();
+        $cart_item=array(
+            'quantity'=>$quantity
+        );
+        $_SESSION['carts'][$productId] = $cart_item;
+        $list_cart = '';
+        foreach ($_SESSION['carts'] as $key => $value) {
+            $result = mysqli_query($mysqli, "SELECT * FROM products WHERE products.id = '$key'");
+            $row = mysqli_fetch_assoc($result);
+            if(is_array($row) && !empty($row)) {
+                $price = $row['price'];
+                $name = $row['name'];
+                $quan = $value['quantity'];
+                $image = "<img src=".BASE_URL.$row['image']." class='img-fluid'>";
+                $amount = $price * $quan;
+                $list_cart .= "<tr>
+                                <td>
+                                    $image
+                                    Optoma 4K HDR Projector
+                                </td>
+                                <td>
+                                    $$price
+                                </td>
+                                <td>
+                                    <input type='number' min='1' value='$quan'>
+                                </td>
+                                <td>
+                                    $$amount
+                                </td>
+                                <td>
+                                    <a href='cart.php?productId=$key'>
+                                        <i class='fas fa-times'></i>
+                                    </a>
+                                </td>
+                            </tr>";
+            }
+        }
+    }
+    if (isset($_GET)) {
+        if (isset($_GET['productId'])) {
+            unset($_SESSION['carts'][$_GET['productId']]);
+            header('Location: cart.php');
+        }
+    }
+
 ?>
 
 <!doctype html>
@@ -165,7 +211,7 @@
                                             </tr>
                                             </thead>
                                             <tbody>
-                                            <tr>
+                                            <!-- <tr>
                                                 <td>
                                                     <img src="images/image-2.jpg" class="img-fluid">
                                                     Optoma 4K HDR Projector
@@ -200,7 +246,10 @@
                                                 <td>
                                                     <button class="btn btn-link text-danger"><i class="fas fa-times"></i></button>
                                                 </td>
-                                            </tr>
+                                            </tr> -->
+                                            <?php
+                                                echo $list_cart;
+                                            ?>
                                             </tbody>
                                             <tfoot>
                                             <tr>

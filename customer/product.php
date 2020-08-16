@@ -149,7 +149,6 @@ define ("BASE_URL", '/shop-dk/');
                         if(is_array($row) && !empty($row)) {
                             $price = $row['price'];
                             $name = $row['name'];
-                            // $image = "<div class='img-large border' data-src='".BASE_URL.$row['image']."' style='background-image: url('".BASE_URL.$row['image']."')'></div>";
                             $image = "<div class='img-large border' style='background-image: url(".BASE_URL.$row['image'].")'></div>";
 
                         }
