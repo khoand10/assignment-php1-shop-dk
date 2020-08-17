@@ -11,6 +11,7 @@
         );
         $_SESSION['carts'][$productId] = $cart_item;
         $list_cart = '';
+        $total = 0;
         foreach ($_SESSION['carts'] as $key => $value) {
             $result = mysqli_query($mysqli, "SELECT * FROM products WHERE products.id = '$key'");
             $row = mysqli_fetch_assoc($result);
@@ -20,6 +21,7 @@
                 $quan = $value['quantity'];
                 $image = "<img src=".BASE_URL.$row['image']." class='img-fluid'>";
                 $amount = $price * $quan;
+                $total += $amount;
                 $list_cart .= "<tr>
                                 <td>
                                     $image
@@ -211,42 +213,6 @@
                                             </tr>
                                             </thead>
                                             <tbody>
-                                            <!-- <tr>
-                                                <td>
-                                                    <img src="images/image-2.jpg" class="img-fluid">
-                                                    Optoma 4K HDR Projector
-                                                </td>
-                                                <td>
-                                                    $1,500
-                                                </td>
-                                                <td>
-                                                    <input type="number" min="1" value="1">
-                                                </td>
-                                                <td>
-                                                    $1,500
-                                                </td>
-                                                <td>
-                                                    <button class="btn btn-link text-danger"><i class="fas fa-times"></i></button>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <img src="images/image-3.jpg" class="img-fluid">
-                                                    HP Envy Specter 360
-                                                </td>
-                                                <td>
-                                                    $2,500
-                                                </td>
-                                                <td>
-                                                    <input type="number" min="1" value="1">
-                                                </td>
-                                                <td>
-                                                    $2,500
-                                                </td>
-                                                <td>
-                                                    <button class="btn btn-link text-danger"><i class="fas fa-times"></i></button>
-                                                </td>
-                                            </tr> -->
                                             <?php
                                                 echo $list_cart;
                                             ?>
@@ -254,15 +220,15 @@
                                             <tfoot>
                                             <tr>
                                                 <th colspan="3" class="text-right">Total</th>
-                                                <th>$4,000</th>
+                                                <th>$<?php echo $total?></th>
                                                 <th></th>
                                             </tr>
                                             </tfoot>
                                         </table>
                                     </div>
                                     <div class="col-12 text-right">
-                                        <button class="btn btn-outline-secondary mr-3" type="submit">Update</button>
-                                        <a href="#" class="btn btn-outline-success">Checkout</a>
+                                        <!-- <button class="btn btn-outline-secondary mr-3" type="submit">Update</button> -->
+                                        <a href="checkout.php" type="submit" class="btn btn-outline-success">Checkout</a>
                                     </div>
                                 </form>
                             </div>

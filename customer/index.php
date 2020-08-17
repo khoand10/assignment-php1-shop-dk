@@ -1,8 +1,4 @@
 <?php session_start(); ?>
-
-<?php
-?>
-
 <?php
 //including the database connection file
 
@@ -12,7 +8,8 @@ define ("BASE_URL", '/shop-dk/');
 //fetching data in descending order (lastest entry first)
 $result = mysqli_query($mysqli, "SELECT * FROM products ORDER BY id DESC");
 
-$length = count($_SESSION['carts']);
+$length = isset($_SESSION['carts']) ? count($_SESSION['carts']) : 0;
+echo $_SESSION['id'];
 ?>
 
 <html lang="en">

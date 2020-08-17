@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Aug 15, 2020 at 04:45 AM
+-- Generation Time: Aug 17, 2020 at 12:46 PM
 -- Server version: 10.4.13-MariaDB
--- PHP Version: 7.4.7
+-- PHP Version: 7.4.8
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -29,11 +29,19 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `bill` (
   `id` int(11) NOT NULL,
-  `total` decimal(10,2) NOT NULL,
-  `created_at` date NOT NULL,
+  `total` decimal(10,2) DEFAULT NULL,
+  `created_at` datetime NOT NULL DEFAULT current_timestamp(),
   `status` int(10) NOT NULL,
   `customer_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `bill`
+--
+
+INSERT INTO `bill` (`id`, `total`, `created_at`, `status`, `customer_id`) VALUES
+(19, '200.00', '2020-08-17 09:39:32', 0, 1),
+(20, '11.80', '2020-08-17 10:32:40', 0, 1);
 
 -- --------------------------------------------------------
 
@@ -97,11 +105,8 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`id`, `name`, `qty`, `price`, `login_id`, `image`) VALUES
-(2, 'test02', 50, '5.90', 1, '/upload/982044.jpg'),
-(3, 'test03', 100, '12.00', 1, '/upload/593483.jpg'),
-(6, 'AO vett01', 100, '12.50', 1, '/upload/studio-3.jpg'),
-(7, 'áo 123', 50, '12.50', 1, '/upload/olu-eletu.jpg'),
-(10, 'áo 123 ô ơ ', 100, '10.40', 1, '/upload/cynthia-del-rio.jpg');
+(15, 'test01', 50, '5.90', 1, '/upload/card-profile1-square.jpg'),
+(16, 'áo sa ', 30, '12.50', 1, '/upload/studio-3.jpg');
 
 -- --------------------------------------------------------
 
@@ -113,8 +118,18 @@ CREATE TABLE `product_bill` (
   `id` int(11) NOT NULL,
   `product_id` int(11) NOT NULL,
   `bill_id` int(11) NOT NULL,
-  `quantity` int(2) NOT NULL
+  `quantity` int(2) NOT NULL,
+  `amount` decimal(10,2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `product_bill`
+--
+
+INSERT INTO `product_bill` (`id`, `product_id`, `bill_id`, `quantity`, `amount`) VALUES
+(3, 15, 19, 1, '5.90'),
+(4, 16, 19, 4, '50.00'),
+(5, 15, 20, 2, '11.80');
 
 --
 -- Indexes for dumped tables
@@ -162,7 +177,7 @@ ALTER TABLE `product_bill`
 -- AUTO_INCREMENT for table `bill`
 --
 ALTER TABLE `bill`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `customer`
@@ -180,13 +195,13 @@ ALTER TABLE `login`
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `product_bill`
 --
 ALTER TABLE `product_bill`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- Constraints for dumped tables

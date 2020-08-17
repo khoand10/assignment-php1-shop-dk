@@ -18,6 +18,8 @@
 		Welcome <?php echo $_SESSION['name'] ?> ! <a href='logout.php'>Logout</a><br/>
 		<br/>
 		<a href='view.php'>View and Add Products</a>
+		<a href='customers.php'>Customers</a>
+		<a href='order-manager.php'>Order management</a>
 		<br/><br/>
 	<?php	
 	} else {
