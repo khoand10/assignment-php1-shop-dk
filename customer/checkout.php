@@ -2,14 +2,12 @@
 <?php
     include("../connection.php");
     define ("BASE_URL", '/shop-dk/');
-    echo "session ".$_SESSION["id"];
     $userId = $_SESSION["id"];
     //insert data to database	
 
     $sql = "INSERT INTO bill(status, customer_id) VALUES ('0', '$userId')";
     if (mysqli_query($mysqli, $sql)) {
         $bill_id = mysqli_insert_id($mysqli);
-        echo "New record created successfully. Last inserted ID is: " . $bill_id;
 
         $is_error = false;
         $total = 0;
@@ -33,6 +31,7 @@
         if (!$is_error) {
             $_SESSION['carts'] = array();
             mysqli_query($mysqli, "UPDATE `bill` SET `total` = '$total' WHERE `bill`.`id` = $bill_id");
+            header("Location:index.php");
         }
 
       } else {

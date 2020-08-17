@@ -62,7 +62,6 @@ if(isset($_POST['Submit'])) {
 			
 		//insert data to database	
 		$result = mysqli_query($mysqli, "INSERT INTO products(name, qty, price, login_id, image) VALUES('$name','$qty','$price', '$loginId', '$chuoi_luu_db')");
-		echo "<br> INSERT INTO products(name, qty, price, login_id, image) VALUES('$name','$qty','$price', '$loginId', '$chuoi_luu_db')";
 		if(mysqli_errno($mysqli)){
 			echo 'loi'. mysqli_error($mysqli);
 		}else{

@@ -2,36 +2,57 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Add Data</title>
+	<link href="//fonts.googleapis.com/css?family=Righteous" rel="stylesheet">
+    <link href="//fonts.googleapis.com/css?family=Open+Sans+Condensed:300,300i,700" rel="stylesheet">
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i" rel="stylesheet">
+
+    <link rel="stylesheet" href="customer/css/bootstrap.min.css">
+    <link rel="stylesheet" href="customer/css/all.min.css">
+    <link rel="stylesheet" href="customer/css/style.css">
 </head>
 
 <body>
-	<a href="index.php">Home</a> | <a href="view.php">View Products</a> | <a href="logout.php">Logout</a>
-	<br/><br/>
+	<!-- <a href="index.php">Home</a> | <a href="view.php">View Products</a> | <a href="logout.php">Logout</a>
+	<br/><br/> -->
 
-	<form action="add.php" method="post" name="form1"  enctype="multipart/form-data">
-		<table width="25%" border="0">
-			<tr> 
-				<td>Name</td>
-				<td><input type="text" name="name"></td>
-			</tr>
-			<tr> 
-				<td>Quantity</td>
-				<td><input type="text" name="qty"></td>
-			</tr>
-			<tr> 
-				<td>Price</td>
-				<td><input type="text" name="price"></td>
-			</tr>
-			<tr>
-				<td>Image</td>
-				<td><input type='file' name="f_anh" /></td>
-			</tr>
-			<tr> 
-				<td></td>
-				<td><input type="submit" name="Submit" value="Add"></td>
-			</tr>
-		</table>
-	</form>
+	<div class="card">
+		<div class="card-header">
+			<ul class="nav">
+				<li class="nav-item">
+					<a class="nav-link active" href="index.php">Home</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="view.php">View Products</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="logout.php">Logout</a>
+				</li>
+			</ul>
+		</div>
+		<div class="card-body">
+			<form action="add.php" method="post" name="form1"  enctype="multipart/form-data">
+				<div class="form-group">
+					<label for="name">Name</label>
+					<input type="text" class="form-control"placeholder="Enter name" name="name">
+				</div>
+				<div class="form-group">
+					<label for="name">Quantity</label>
+					<input type="text" class="form-control"placeholder="Enter name" name="qty">
+				</div>
+				<div class="form-group">
+					<label for="name">Price</label>
+					<input type="text" class="form-control"placeholder="Enter name" name="price">
+				</div>
+				<div class="form-group">
+					<label for="exampleFormControlFile1">Image</label>
+					<input type="file" class="form-control-file" id="exampleFormControlFile1" name="f_anh">
+				</div>
+				<div class="form-group">
+					<input class="btn btn-primary" type="submit" name="Submit" value="Add">
+				</div>
+			</form>
+		</div>
+	</div>	
 </body>
 </html>
 

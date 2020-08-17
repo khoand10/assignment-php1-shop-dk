@@ -28,8 +28,15 @@ $result = mysqli_query($mysqli, "SELECT * FROM `customer` WHERE 1");
 <body>
     <div class="card">
     <div class="card-header">
-        Customer manager
-        <a href="index.php" class="card-link">Home</a>
+        <h2>Customer manager</h2>
+        <ul class="nav">
+            <li class="nav-item">
+                <a class="nav-link active" href="index.php">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="logout.php">Logout</a>
+            </li>
+        </ul>
     </div>
     <div class="card-body">
         <h5 class="card-title">List customer</h5>

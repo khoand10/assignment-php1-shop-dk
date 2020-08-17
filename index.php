@@ -3,11 +3,18 @@
 <head>
 	<title>Homepage</title>
 	<link href="style.css" rel="stylesheet" type="text/css">
+	<link href="//fonts.googleapis.com/css?family=Righteous" rel="stylesheet">
+    <link href="//fonts.googleapis.com/css?family=Open+Sans+Condensed:300,300i,700" rel="stylesheet">
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i" rel="stylesheet">
+
+    <link rel="stylesheet" href="customer/css/bootstrap.min.css">
+    <link rel="stylesheet" href="customer/css/all.min.css">
+    <link rel="stylesheet" href="customer/css/style.css">
 </head>
 
 <body>
 	<div id="header">
-		Welcome to my page!
+		Welcome to system console!
 	</div>
 	<?php
 	if(isset($_SESSION['valid'])) {			
@@ -17,9 +24,17 @@
 				
 		Welcome <?php echo $_SESSION['name'] ?> ! <a href='logout.php'>Logout</a><br/>
 		<br/>
-		<a href='view.php'>View and Add Products</a>
-		<a href='customers.php'>Customers</a>
-		<a href='order-manager.php'>Order management</a>
+		<ul class="nav">
+			<li class="nav-item">
+				<a class="nav-link active" href="view.php">View and Add Products</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="customers.php">Customers</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="order-manager.php">Order management</a>
+			</li>
+		</ul>
 		<br/><br/>
 	<?php	
 	} else {
